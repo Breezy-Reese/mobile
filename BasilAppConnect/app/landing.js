@@ -84,6 +84,7 @@ export default function LandingScreen() {
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
+        contentContainerStyle={{ paddingVertical: 20 }}
         extraData={appliedJobs} // <-- MUST include this
       />
 
@@ -133,10 +134,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
     alignItems: "center",
+    height: 140,
+    justifyContent: "center",
   },
 
-  topJobTitle: { color: "#fff", fontWeight: "bold", fontSize: 16 },
-  topJobCompany: { color: "#bbb", fontSize: 14 },
+  topJobTitle: { color: "#fff", fontWeight: "bold", fontSize: 16, textAlign: "center" },
+  topJobCompany: { color: "#bbb", fontSize: 14, textAlign: "center", marginBottom: 10 },
 
   // All jobs list
   jobItem: {
