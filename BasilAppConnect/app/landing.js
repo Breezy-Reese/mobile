@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Dimensions } from "react-native";
 import { useRouter } from "expo-router";
+import { useAuth } from "@/contexts/AuthContext";
 
 const topJobs = [
   { id: "1", title: "Software Engineer", company: "TechCorp", description: "Develop and maintain software applications.", requirements: "Bachelor's in CS, 3+ years experience.", salary: "$80k-$120k" },
@@ -19,6 +20,7 @@ const { width } = Dimensions.get("window");
 
 export default function LandingScreen() {
   const router = useRouter();
+  const { logout } = useAuth();
   const [appliedJobs, setAppliedJobs] = useState([]); // Track applied jobs
 
   const handleApply = (jobId, jobTitle) => {
@@ -114,7 +116,10 @@ export default function LandingScreen() {
         <Text style={styles.statusButtonText}>Application Status</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.logoutButton} onPress={() => router.push("/Authentication/Login")}>
+      <TouchableOpacity style={styles.logoutButton} onPress={() => {
+        logout();
+        router.push("/Authentication/login");
+      }}>
         <Text style={styles.logoutButtonText}>Log Out</Text>
       </TouchableOpacity>
     </View>
